@@ -25,6 +25,7 @@ jobs:
         
       - name: Copy web files into Android project
         run: |
+          npm run build
           npx cap add android
           npx cap sync android
           node scripts/patch-android.js
