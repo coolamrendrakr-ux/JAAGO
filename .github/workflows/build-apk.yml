@@ -23,8 +23,12 @@ jobs:
       - name: Install packages
         run: npm install
 
-      - name: Copy web files into Android project
+      - name: Create and set up Android project
         run: |
+          if [ ! -f android/app/src/main/AndroidManifest.xml ]; then
+            rm -rf android
+            npx cap add android
+          fi
           node scripts/patch-android.js
           npx cap sync android
 
