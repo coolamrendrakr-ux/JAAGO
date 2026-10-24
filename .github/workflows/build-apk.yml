@@ -22,12 +22,12 @@ jobs:
 
       - name: Install packages
         run: npm install
-
+        
       - name: Copy web files into Android project
         run: |
-          node scripts/patch-android.js
           npx cap sync android
-
+          node scripts/patch-android.js
+          
       - name: Build debug APK
         working-directory: android
         run: |
